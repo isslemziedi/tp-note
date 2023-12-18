@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.app-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #007bff; /* Primary color */
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+.form-control {
+  border-radius: 4px;
+}
+
+.list-group {
+  margin-top: 20px;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.note-text {
+  flex-grow: 1;
+}
+
+.btn-square-cross {
+  background-color: #dc3545; /* Danger color */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="app-title">{{ title }} App is Running</h1>
+    
+    <div class="input-group mb-3">
+      <input [(ngModel)]="note" class="form-control" placeholder="Enter a note" />
+      <div class="input-group-append">
+        <button class="btn btn-primary" (click)="addNote()">Add Note</button>
+        <button class="btn btn-danger" (click)="deleteAllNotes()">Delete All</button>
+      </div>
+    </div>
+  
+    <ul class="list-group">
+      <li *ngFor="let n of notes; let i = index" class="list-group-item" [style.color]="getColor(i)">
+        <span class="note-text">{{ n.text }}</span>
+        <button class="btn btn-square-cross" (click)="deleteNote(i)">&#10006;</button>
+      </li>
+    </ul>
+  </div>
+  
+</body>
+</html>
